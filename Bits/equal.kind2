@@ -6,4 +6,4 @@ Bits.equal (a: Bits) (b: Bits) : Bool
 Bits.equal (Bits.e)        (Bits.e)        = (Bool.true)
 Bits.equal (Bits.o a.pred) (Bits.o b.pred) = (Bits.equal a.pred b.pred)
 Bits.equal (Bits.i a.pred) (Bits.i b.pred) = (Bits.equal a.pred b.pred)
-Bits.equal (a)             (b)             = (Bool.false)
+Bits.equal a               b               = (Bool.false)
