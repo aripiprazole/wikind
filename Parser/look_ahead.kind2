@@ -5,10 +5,9 @@ Parser.look_ahead <a> <t> (prs: Parser t a) : Parser t a {
     let state = Parser.State.new state.custom state.left state.back state.index
     // save initial index
     let init  = state.index
-    // Apply parser
     match Parser.Result res = (prs state) {
       // on success, backtrack and return result
-      done (state = new_state) result =>
+      done (state @ new_state) result =>
         open Parser.State new_state
         let new_state = Parser.State.new new_state.custom new_state.left new_state.back new_state.index
         let last      = new_state.index
@@ -16,7 +15,7 @@ Parser.look_ahead <a> <t> (prs: Parser t a) : Parser t a {
         let old_state = Parser.State.backtrack back_n new_state
         Parser.Result.done old_state result
       // on fail, backtrack and propagate fail
-      fail (state = new_state) error =>
+      fail (state @ new_state) error =>
         open Parser.State new_state
         let new_state = Parser.State.new new_state.custom new_state.left new_state.back new_state.index
         let last      = new_state.index
