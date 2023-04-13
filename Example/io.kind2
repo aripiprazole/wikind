@@ -4,9 +4,9 @@
 
 Example.input_output: (IO U60) {
   do IO {
-    ask IO.output Example.ask_name
+    IO.output Example.ask_name
     ask name = IO.input
-    ask IO.output (Example.greet name)
+    IO.output (Example.greet name)
     return 42
   }
 }

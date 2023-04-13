@@ -34,24 +34,24 @@ Sipher.blastoise.fun.aux (Nat.succ n.pred) = List.cons (Nat.succ Nat.zero) (Siph
 Sipher.blastoise.fun : Blastoise.requisito.type
 Sipher.blastoise.fun = x => (Sipher.blastoise.fun.aux x)
 
-Sipher.blastoise.proof.aux.0 (n: Nat) : Equal Nat (List.length Nat (Sipher.blastoise.fun.aux n)) n
-Sipher.blastoise.proof.aux.0 Nat.zero = Equal.refl
-Sipher.blastoise.proof.aux.0 (Nat.succ n.pred) =
-  let ind = Sipher.blastoise.proof.aux.0 n.pred
+Sipher.blastoise.proof.aux._0 (n: Nat) : Equal Nat (List.length Nat (Sipher.blastoise.fun.aux n)) n
+Sipher.blastoise.proof.aux._0 Nat.zero = Equal.refl
+Sipher.blastoise.proof.aux._0 (Nat.succ n.pred) =
+  let ind = Sipher.blastoise.proof.aux._0 n.pred
   let prf = Equal.apply (x => Nat.succ x) ind
   prf
 
-Sipher.blastoise.proof.aux.1 (n: Nat) : Equal Nat (List.sum (Sipher.blastoise.fun.aux n)) n
-Sipher.blastoise.proof.aux.1 Nat.zero = Equal.refl
-Sipher.blastoise.proof.aux.1 (Nat.succ n.pred) =
-  let ind = Sipher.blastoise.proof.aux.1 n.pred
+Sipher.blastoise.proof.aux._1 (n: Nat) : Equal Nat (List.sum (Sipher.blastoise.fun.aux n)) n
+Sipher.blastoise.proof.aux._1 Nat.zero = Equal.refl
+Sipher.blastoise.proof.aux._1 (Nat.succ n.pred) =
+  let ind = Sipher.blastoise.proof.aux._1 n.pred
   let prf = Equal.apply (x => Nat.succ x) ind
   prf
 
 Sipher.blastoise.proof : ((Blastoise.requisito.spec) Sipher.blastoise.fun)
 Sipher.blastoise.proof = input =>
-  let req_0_proof = Sipher.blastoise.proof.aux.0 input
-  let req_1_proof = Sipher.blastoise.proof.aux.1 input
+  let req_0_proof = Sipher.blastoise.proof.aux._0 input
+  let req_1_proof = Sipher.blastoise.proof.aux._1 input
   (Pair.new 
     (Equal Nat (List.length Nat (Sipher.blastoise.fun.aux input)) input)
     (Equal Nat (List.sum (Sipher.blastoise.fun.aux input)) input)
