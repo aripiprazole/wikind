@@ -7,7 +7,7 @@ Data.BBT.set <k> <v>
 : Data.BBT k v {
   match Data.BBT map {
     tip => Data.BBT.singleton k v key val
-    bin (key = map_key) (val = map_val) left right size => 
+    bin (map_key @ key) (map_val @ val) left right size => 
       let comp = (cmp key map_key)
       match Cmp comp {
         // if key < map_key, the new value should go into the left subtree
