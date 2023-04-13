@@ -11,11 +11,11 @@ Pos: Type {
 
 // A position can be one of 5 boxes
 type Box {
-  0
-  1
-  2
-  3
-  4
+  _0
+  _1
+  _2
+  _3
+  _4
 }
 
 // Every turn, the cat can move Move.left or Move.right
@@ -35,25 +35,25 @@ Strategy: Type {
 
 // Two positions are equal if they're the same
 Pos.equal (a: Pos) (b: Pos) : Bool
-Pos.equal Box.0 Box.0 = Bool.true
-Pos.equal Box.1 Box.1 = Bool.true
-Pos.equal Box.2 Box.2 = Bool.true
-Pos.equal Box.3 Box.3 = Bool.true
-Pos.equal Box.4 Box.4 = Bool.true
+Pos.equal Box._0 Box._0 = Bool.true
+Pos.equal Box._1 Box._1 = Bool.true
+Pos.equal Box._2 Box._2 = Bool.true
+Pos.equal Box._3 Box._3 = Bool.true
+Pos.equal Box._4 Box._4 = Bool.true
 Pos.equal a     b     = Bool.false
 
 // Moves a cat to the next position
 Move.apply (move: Move) (cat: Cat) : Cat
-Move.apply Move.left  Box.0 = Box.1
-Move.apply Move.right Box.0 = Box.1
-Move.apply Move.left  Box.1 = Box.0
-Move.apply Move.right Box.1 = Box.2
-Move.apply Move.left  Box.2 = Box.1
-Move.apply Move.right Box.2 = Box.3
-Move.apply Move.left  Box.3 = Box.2
-Move.apply Move.right Box.3 = Box.4
-Move.apply Move.left  Box.4 = Box.3
-Move.apply Move.right Box.4 = Box.3
+Move.apply Move.left  Box._0 = Box._1
+Move.apply Move.right Box._0 = Box._1
+Move.apply Move.left  Box._1 = Box._0
+Move.apply Move.right Box._1 = Box._2
+Move.apply Move.left  Box._2 = Box._1
+Move.apply Move.right Box._2 = Box._3
+Move.apply Move.left  Box._3 = Box._2
+Move.apply Move.right Box._3 = Box._4
+Move.apply Move.left  Box._4 = Box._3
+Move.apply Move.right Box._4 = Box._3
 
 // Every turn, we open a box.
 // If the cat is there, we win, 
