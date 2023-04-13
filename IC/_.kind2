@@ -194,7 +194,7 @@ Env.subst (Env.new vars size) name term = Env.new (Map.set vars name term) size
 // The take operation just replaces a variable by its substituted value.
 Env.take (env: Env) (name: U60) : Pair Env (Maybe IC.Term)
 Env.take (Env.new vars size) name = 
-  let Pair.new (fst = vars) (snd = got) = Map.got vars name
+  let Pair.new (vars @ fst) (got @ snd) = Map.got vars name
   Pair.new (Env.new vars size) got
 
 // The fresh operation allows us to create new, globally unique variables.
