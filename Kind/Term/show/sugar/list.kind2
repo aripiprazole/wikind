@@ -2,14 +2,14 @@ use Kind.Term as Term
 use Kind.Printer as Printer
 
 #axiom
-List.nil.  : Kind.Name
+List.nil  : Kind.Name
 
 #axiom
-List.cons. : Kind.Name
+List.cons : Kind.Name
 
 Term/show.sugar.list.go (term: Kind.Term): Maybe (List String)
-Term/show.sugar.list.go (Term/ct0 List.nil.  orig) = Maybe.some List.nil
-Term/show.sugar.list.go (Term/ct2 List.cons. orig x0 x1) =
+Term/show.sugar.list.go (Term/ct0 %List.nil  orig) = Maybe.some List.nil
+Term/show.sugar.list.go (Term/ct2 %List.cons orig x0 x1) =
   do Maybe {
     ask tail = Term/show.sugar.list.go x1
     return List.cons (Term/show x0) tail

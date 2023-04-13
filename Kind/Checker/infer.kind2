@@ -235,7 +235,7 @@ Checker/infer (Term/op2 orig oper left right) =
 Checker/infer (Term/args15 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _) = Kind.Axiom.Null
 Checker/infer (Term/args16 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _) = Kind.Axiom.Null 
 
-Checker/infer.forall <r> (term: Kind.Term) (then_fn: U60 -> U60 -> Kind.Term -> ((Kind.Term) -> Kind.Term) -> Kind.Checker r) (else_val: Kind.Checker r) : Kind.Checker r
+Checker/infer.forall <r> (term: Kind.Term) (then_fn: U60 -> U60 -> Kind.Term -> (Kind.Term -> Kind.Term) -> Kind.Checker r) (else_val: Kind.Checker r) : Kind.Checker r
 Checker/infer.forall r (Term/all orig name type body) then_fn else_val = then_fn orig name type body
 Checker/infer.forall r (Term/var orig name index) then_fn else_val = do Kind.Checker {
   ask reducs = Checker/find index [] (n => t => v => v)
@@ -244,7 +244,7 @@ Checker/infer.forall r (Term/var orig name index) then_fn else_val = do Kind.Che
 }
 Checker/infer.forall r other then_fn else_val = else_val
 
-Checker/infer.forall.try_values <r> (terms: List Kind.Term) (then_fn: U60 -> U60 -> Kind.Term -> ((Kind.Term) -> Kind.Term) -> Kind.Checker r) (else_val: Kind.Checker r) : Kind.Checker r
+Checker/infer.forall.try_values <r> (terms: List Kind.Term) (then_fn: U60 -> U60 -> Kind.Term -> (Kind.Term -> Kind.Term) -> Kind.Checker r) (else_val: Kind.Checker r) : Kind.Checker r
 Checker/infer.forall.try_values r (List.cons (Term/all orig name type body) terms) then_fn else_val = then_fn orig name type body
 Checker/infer.forall.try_values r (List.cons other                               terms) then_fn else_val = Checker/infer.forall.try_values r terms then_fn else_val
 Checker/infer.forall.try_values r List.nil                                              then_fn else_val = else_val

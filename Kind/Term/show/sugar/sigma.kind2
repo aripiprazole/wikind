@@ -3,10 +3,10 @@ use Kind.Name as Name
 use Kind.Printer as Printer
 
 #axiom
-Sigma.  : Kind.Name
+%Sigma  : Kind.Name
 
 Term/show.sugar.sigma (term: Kind.Term): Maybe String
-Term/show.sugar.sigma (Term/ct2 Sigma. orig typ (Term/lam orig_ name body)) =
+Term/show.sugar.sigma (Term/ct2 %Sigma orig typ (Term/lam orig_ name body)) =
   Maybe.some (
     Printer/text
       [ "(["
