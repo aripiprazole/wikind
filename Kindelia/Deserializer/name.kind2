@@ -5,15 +5,15 @@ Kindelia.Deserializer.name: Kindelia.Deserializer U120 {
       e => Kindelia.Deserializer.err
       o => 
         do Kindelia.Deserializer {
-          ask Kindelia.Deserializer.consume (Bits.o Bits.e)
+          Kindelia.Deserializer.consume (Bits.o Bits.e)
           ask letters = Kindelia.Deserializer.list (Kindelia.Deserializer.fixlen (U120.new 0 6))
-          let name = Kindelia.Deserializer.name.join letters U120.0
-          ask Kindelia.Deserializer.set_name name
+          let name = Kindelia.Deserializer.name.join letters 0u120
+          Kindelia.Deserializer.set_name name
           return name
         }
       i => 
         do Kindelia.Deserializer {
-          ask Kindelia.Deserializer.consume (Bits.i Bits.e)
+          Kindelia.Deserializer.consume (Bits.i Bits.e)
           ask id = Kindelia.Deserializer.varlen
           ask name = Kindelia.Deserializer.get_name id
           return name
@@ -24,10 +24,10 @@ Kindelia.Deserializer.name: Kindelia.Deserializer U120 {
 
 Kindelia.Deserializer.name.join (letters: List U120) (idx: U120): U120 {
   match List letters {
-    nil => U120.0
+    nil => 0u120
     cons =>
       let six  = U120.new 0 6
-      let next = Kindelia.Deserializer.name.join letters.tail (U120.add idx U120.1)
+      let next = Kindelia.Deserializer.name.join letters.tail (U120.add idx 1u120)
       let name = U120.shift_left letters.head (U120.mul six idx)
       let acc  = U120.add next name
       acc

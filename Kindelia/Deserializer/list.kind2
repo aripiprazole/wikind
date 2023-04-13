@@ -4,11 +4,11 @@ Kindelia.Deserializer.list <a> (deserializer: Kindelia.Deserializer a): Kindelia
     match Bits bits {
       e => Kindelia.Deserializer.err
       o => do Kindelia.Deserializer {
-        ask Kindelia.Deserializer.consume (Bits.o Bits.e)
+        Kindelia.Deserializer.consume (Bits.o Bits.e)
         return List.nil
       }
       i => do Kindelia.Deserializer {
-        ask Kindelia.Deserializer.consume (Bits.i Bits.e)
+        Kindelia.Deserializer.consume (Bits.i Bits.e)
         ask item = (deserializer)
         ask next = Kindelia.Deserializer.list deserializer
         return List.cons item next

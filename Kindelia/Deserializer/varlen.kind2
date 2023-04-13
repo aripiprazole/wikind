@@ -5,26 +5,26 @@ Kindelia.Deserializer.varlen: Kindelia.Deserializer U120 {
       e => Kindelia.Deserializer.err
       o => 
         do Kindelia.Deserializer {
-          ask Kindelia.Deserializer.consume (Bits.o Bits.e)
-          return U120.0
+          Kindelia.Deserializer.consume (Bits.o Bits.e)
+          return 0u120
         }
       i => 
         do Kindelia.Deserializer {
-          ask Kindelia.Deserializer.consume (Bits.i Bits.e)
+          Kindelia.Deserializer.consume (Bits.i Bits.e)
           ask bits = Kindelia.Deserializer.get_bits
           match Bits bits {
             e => Kindelia.Deserializer.err
             o => 
               do Kindelia.Deserializer {
-                ask Kindelia.Deserializer.consume (Bits.o Bits.e)
+                Kindelia.Deserializer.consume (Bits.o Bits.e)
                 ask numb = Kindelia.Deserializer.varlen
-                return (U120.add (U120.mul numb U120.2) U120.0)
+                return (U120.add (U120.mul numb 2u120) 0u120)
               }
             i => 
               do Kindelia.Deserializer {
-                ask Kindelia.Deserializer.consume (Bits.i Bits.e)
+                Kindelia.Deserializer.consume (Bits.i Bits.e)
                 ask numb = Kindelia.Deserializer.varlen
-                return (U120.add (U120.mul numb U120.2) U120.1)
+                return (U120.add (U120.mul numb 2u120) 1u120)
               }
           }
         }

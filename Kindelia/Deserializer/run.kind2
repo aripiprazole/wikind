@@ -1,6 +1,6 @@
 Kindelia.Deserializer.run <a> (deserializer: Kindelia.Deserializer a) (bits: Bits): Maybe a {
   let names = Data.BBT.tip
-  let result = deserializer bits names U120.0
+  let result = deserializer bits names 0u120
   do Maybe {
     ask result = result
     let result = Pair.fst result

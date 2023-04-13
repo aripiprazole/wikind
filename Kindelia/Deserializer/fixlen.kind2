@@ -1,8 +1,8 @@
-Kindelia.Deserializer.fixlen (size: U120) : Kindelia.Deserializer (U120)
-Kindelia.Deserializer.fixlen (size) = 
-  if (U120.equal size U120.0) {
+Kindelia.Deserializer.fixlen (size: U120) : Kindelia.Deserializer U120
+Kindelia.Deserializer.fixlen size = 
+  if (U120.equal size 0u120) {
     do Kindelia.Deserializer {
-      return U120.0
+      return 0u120
     }
   } else {
     do Kindelia.Deserializer {
@@ -11,15 +11,15 @@ Kindelia.Deserializer.fixlen (size) =
         e => Kindelia.Deserializer.err
         o => 
           do Kindelia.Deserializer {
-            ask Kindelia.Deserializer.consume (Bits.o Bits.e)
-            ask numb = Kindelia.Deserializer.fixlen (U120.sub size U120.1)
-            return (U120.add (U120.mul numb U120.2) U120.0)
+            Kindelia.Deserializer.consume (Bits.o Bits.e)
+            ask numb = Kindelia.Deserializer.fixlen (U120.sub size 1u120)
+            return (U120.add (U120.mul numb 2u120) 0u120)
           }
         i => 
           do Kindelia.Deserializer {
-            ask Kindelia.Deserializer.consume (Bits.i Bits.e)
-            ask numb = Kindelia.Deserializer.fixlen (U120.sub size U120.1)
-            return (U120.add (U120.mul numb U120.2) U120.1)
+            Kindelia.Deserializer.consume (Bits.i Bits.e)
+            ask numb = Kindelia.Deserializer.fixlen (U120.sub size 1u120)
+            return (U120.add (U120.mul numb 2u120) 1u120)
           }
       }
     }
