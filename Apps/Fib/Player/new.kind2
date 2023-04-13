@@ -5,12 +5,9 @@ Apps.Fib.Player.new
   (xp : U120)
   (hp : U120)
   (of : U120)
-  // (rt : U120)
-  // (sl : U120)
   (gd : U120)
   (cd : U120)
-  (skills : List U120)
-  : Apps.Fib.Player {
+  (skills : List U120): Apps.Fib.Player {
     let player = U120.new 0 0
     let player = Apps.Fib.Player.pos.change player ((val : U120) => U120.add (U120.shift_left y (U120.new 0 8)) x)
     let player = Apps.Fib.Player.xp.change  player ((val : U120) => xp)

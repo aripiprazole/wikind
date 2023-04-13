@@ -57,7 +57,7 @@ Apps.Demo.draw (List.cons (List String) array1 (List.nil (List String))) =
 
 // The 'when' function reacts to events. Can perform effects via IO, and may return a new state.
 Apps.Demo.when (event: App.Event) (state: Apps.Demo.State) : IO Apps.Demo.State
-Apps.Demo.when App.Event.init (matrix) = do IO {
+Apps.Demo.when App.Event.init matrix = do IO {
   return [["1" "2" "3" "4" "5" "6" "7" "8" "9"]]
 }
 Apps.Demo.when (App.Event.mouse_click id) state = do IO {
