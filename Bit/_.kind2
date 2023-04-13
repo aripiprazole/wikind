@@ -2,7 +2,7 @@
 // #derive[match]
 type Bit {
   #kdl_name = Bit_0
-  0
+  _0
   #kdl_name = Bit_1
-  1
+  _1
 }
