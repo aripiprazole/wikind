@@ -1,5 +1,5 @@
 // Halves a number. Returns the half, `h`, a proof that either `h*2=n` or `h*2+1=n`.
-Nat.half.rel (n: Nat) : [m: Nat] (Either (Equal Nat n (Nat.double m)) (Equal Nat n (Nat.succ (Nat.double m))))
+Nat.half.rel (n: Nat) : [m: Nat] -> (Either (Equal Nat n (Nat.double m)) (Equal Nat n (Nat.succ (Nat.double m))))
 Nat.half.rel Nat.zero = $ Nat.zero (Either.left Equal.refl)
 Nat.half.rel (Nat.succ n) =
   let ind = Nat.half.rel n
